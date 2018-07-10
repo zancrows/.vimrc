@@ -75,8 +75,7 @@ nnoremap <C-c> :tabclose<CR>
 nnoremap <C-t> :tabnew<CR>
 " Afficher arborescence
 map <F2> <Esc>:NERDTreeToggle<CR><Esc>:NERDTreeMirror<CR>
-" retour sur NERDTree
-nnoremap <silent> <F9> :NERDTree<CR><Esc>:NERDTreeMirror<CR>
+
 
 " Smart way to move between windows
 map <C-j> <C-W>j
