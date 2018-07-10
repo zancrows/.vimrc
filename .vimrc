@@ -21,8 +21,8 @@ set shiftwidth=4        " Indentation toutes les quatre colonnes
 set softtabstop=4       " une indentation = 4 espaces
 set showmatch           " Surligne le mots recherchés dans le texte
 set hlsearch            " Surligne tous les résultats de la recherche
-set smartindent         " Active "smart-indent" (améliore l'auto-indentation, notamment en collant du texte déjà indenté)
-set smarttab            " Active "smart-tabs" (améliore l'auto-indentation, Gestion des espaces en début de ligne pour l'auto-indentation)
+set smartindent         " Active smart-indent (améliore l'auto-indentation, notamment en collant du texte déjà indenté)
+set smarttab            " Active smart-tabs (améliore l'auto-indentation, Gestion des espaces en début de ligne pour l'auto-indentation)
 set autoindent          " Conserve l'indentation courante sur les nouvelles lignes 
 set showmode            " Affiche le mode d'édition
 set ruler               " Afficher la position courante
