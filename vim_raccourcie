@@ -1,10 +1,11 @@
-
 # raccourcie de vim avec les plugins
-# commande [équivalence si il y en]: description
+# commande (précision sur la commande) [équivalence si il y en]: description
 # <C-commande> = crtl-commande 
+
+
 [vim]
-
-
+<C-p> : autocomplétion en cherchant dans les fichiers ouvert
+<C-x><C-o> : autocomplétion omni
 
 [vimrc]
 F2 : ferme/ouvre NERDTree
@@ -12,6 +13,21 @@ F2 : ferme/ouvre NERDTree
 <C-Right> [:tabnext] : Aller à l'onglet suivant
 <C-c> [:tabclose]: fermer l'onglet courant
 <C-t> [:tabnew]: ouvre un nouvel onglet
+
+[map]
+map = noremap
+Overview of which map command works in which mode.  More details below.
+     COMMANDS                    MODES ~
+:map   :noremap  :unmap     Normal, Visual, Select, Operator-pending
+:nmap  :nnoremap :nunmap    Normal
+:vmap  :vnoremap :vunmap    Visual and Select
+:smap  :snoremap :sunmap    Select
+:xmap  :xnoremap :xunmap    Visual
+:omap  :onoremap :ounmap    Operator-pending
+:map!  :noremap! :unmap!    Insert and Command-line
+:imap  :inoremap :iunmap    Insert
+:lmap  :lnoremap :lunmap    Insert, Command-line, Lang-Arg
+:cmap  :cnoremap :cunmap    Command-line
 
 [NERDTRee]
 o(sur fichier) : ouvrir le fichier
