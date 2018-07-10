@@ -1,4 +1,4 @@
-set nocompatible      " Nécessaire
+set nocompatible      " NÃ©cessaire
 filetype off                  " required
 
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -45,15 +45,15 @@ set shiftwidth=4        " Une tabulation = 4 espaces
 set tabstop=4
 set expandtab        " Transformer les tabulations en espaces
 set ruler        " Afficher la position courante
-set smarttab        " Être intelligent dans l'utilisation des tabulations
+set smarttab        " ÃŠtre intelligent dans l'utilisation des tabulations
 set fileencoding=utf-8          " Encoder en UTF-8
 set wildignore=*.o,*~
-set shell=bash
-set foldmethod=syntax " fold spécifié selon la syntaxe du langage
-set nofoldenable      " par défaut on laisse tout visible 
+set shell=bash        " si sur windows  Ã  commenter
+set foldmethod=syntax " fold spÃ©cifiÃ© selon la syntaxe du langage
+set nofoldenable      " par dÃ©faut on laisse tout visible 
 set foldlevel=1       " on repli pour le premier niveau
 
-" Autocomplétion intelligente
+" AutocomplÃ©tion intelligente
 set omnifunc=syntaxcomplete#Complete
 
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
@@ -65,9 +65,9 @@ match NoSpacesEOL / \+$/
 highlight NoTabs ctermbg=red ctermfg=white guibg=#592929
 match NoTabs /\t/
 
-" Aller à l'onglet suivant
+" Aller Ã  l'onglet suivant
 nnoremap <C-Left>  :tabprevious<CR>
-" Aller à l'onglet précédent
+" Aller Ã  l'onglet prÃ©cÃ©dent
 nnoremap <C-Right>  :tabnext<CR>
 " Fermer l'onglet courant
 nnoremap <C-c> :tabclose<CR>
@@ -83,8 +83,6 @@ map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
-
-
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
