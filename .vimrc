@@ -2,7 +2,7 @@ set nocompatible    " required > annule la rétro compatibilité avec VI
 filetype off        " required
 
 
-""" Utilisation de vundle pour charger les différents plugins
+""" Utilisation de vundle pour charger différents plugins
 
 
 filetype plugin indent on  
@@ -12,7 +12,6 @@ filetype plugin indent on
 syntax on               " active la coloration syntaxique
 set noswapfile          " ne créé pas de swap file
 set number              " affiche les numéros de ligne
-set smartindent         " Indentation intelligente
 set backspace=indent,eol,start " permet les les retour avec autoindent 
 set autoindent          " Conserve l'indentation sur une nouvelle ligne
 set ruler               " Affiche la position du curseur
@@ -33,9 +32,17 @@ set wildignore=*.o,*~   " On ignore les fichiers *.o et *~
 set laststatus=2        " Afficher toujours la bar de status
 "set cursorline          " Highlight current line
 set tabpagemax=15       " Only show 15 tabs
-"set foldenable          " enable folding
-"set foldcolumn=3        " add a fold column
-"set foldmethod=syntax   " Fold spécifié selon la syntaxe du langage
+
+
+""" foldings
+set foldmethod=indent   " Fold spécifié selon la syntaxe du langage
+set foldenable          " enable folding
+set foldlevelstart=99   " ouvre tous les folds 
+set foldcolumn=3        " ajoute 3 colonnes pour le folding
+set foldnestmax=10      " maximum de folds imbriqué
+"sauvegarde et rechargement des folds 
+autocmd BufWinLeave *.* mkview
+autocmd BufWinEnter *.* silent loadview 
 
 
 """ scheme
@@ -43,9 +50,9 @@ colorscheme torte
 "set t_Co=88
 
 
-""" affiche en rouge quand une ligne dépasse les 81 caractères, les tabulations
+""" affiche en rouge quand une ligne dépasse les 81 caractères (+1 pour les sauts de ligne) , les tabulations
 """ et les espaces en fin de ligne
-match ErrorMsg /\%81v.*\|\t\| \+$/
+match ErrorMsg /\%>82v.*\|\t\| \+$/
 
 
 """ ajout de raccourcie
@@ -55,6 +62,23 @@ nmap <C-Right>  :tabnext<CR>    " Aller à l'onglet précédent
 nmap <C-c> :tabclose<CR>        " Fermer l'onglet courant
 nmap <C-t> :tabnew<CR>          " Ouvrir un nouvel onglet
 imap <C-Space> <C-x><C-o>       " utilisation de l'omni completion
+" permet la completion de différent caractère
+imap ( ()<ESC>ha
+imap [ []<ESC>ha
+imap " ""<ESC>ha
+imap ' ''<ESC>ha
+imap { {}<ESC>ha
+
+" completion en fonction du langage
+autocmd FileType java call s:function_brackets()
+autocmd FileType javascript call s:function_brackets()
+autocmd FileType c call s:function_brackets()
+autocmd FileType css cass s:function_brackets()
+
+" completetion des accolades pour les fonctions, if, for etc...
+function s:function_brackets()
+    imap {<CR> {<CR>}<ESC>k$i<CR><ESC>o
+endfunction
 
 " support pavé numérique dans PuTTY
 imap ^[Oq 1
@@ -83,7 +107,6 @@ imap ^[OS -
 "autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 "autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 "autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
-
 
 
 """ for Linux 
