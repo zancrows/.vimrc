@@ -4,8 +4,11 @@
 
 
 [vim]
+u (mode normal) : équivalent ctrl-z
+za (mode normal) : ouvrir/fermer les folds
 <C-p> : autocomplétion en cherchant dans les fichiers ouvert
 <C-x><C-o> : autocomplétion omni
+
 
 [vimrc]
 F2 : ferme/ouvre NERDTree
@@ -15,7 +18,6 @@ F2 : ferme/ouvre NERDTree
 <C-t> [:tabnew]: ouvre un nouvel onglet
 
 [map]
-map = noremap
 Overview of which map command works in which mode.  More details below.
      COMMANDS                    MODES ~
 :map   :noremap  :unmap     Normal, Visual, Select, Operator-pending
