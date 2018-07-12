@@ -3,7 +3,16 @@ filetype off        " required
 
 
 """ Utilisation de vundle pour charger différents plugins
+set rtp+=
+call vundle#begin()
 
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'vim-syntastic/syntastic'
+"Plugin 'Valloric/YouCompleteMe'
+Plugin 'lifepillar/vim-solarized8'
+
+call vundle#end()
 
 filetype plugin indent on
 
@@ -30,7 +39,7 @@ set fileencoding=utf-8  " Encoder en UTF-8
 set termencoding=utf-8  " Encoder en UTF-8
 set wildignore=*.o,*~   " On ignore les fichiers *.o et *~
 set laststatus=2        " Afficher toujours la bar de status
-"set cursorline          " Highlight current line
+set cursorline          " Highlight current line
 set tabpagemax=15       " Only show 15 tabs
 
 
@@ -55,6 +64,11 @@ autocmd BufWinEnter *.* silent loadview
 """ scheme
 colorscheme torte
 "set t_Co=88
+"let g:solarized_use16 = 1
+let g:solarized_termtrans = 1
+let g:solarized_visibility = "hight"
+set background=dark
+
 
 
 """ affiche en rouge quand une ligne dépasse les 81 caractères (+1 pour les sauts de ligne) , les tabulations
@@ -63,7 +77,6 @@ match ErrorMsg /\%>82v.*\|\t\| \+$/
 
 
 """ ajout de raccourcie
-" map <F2> <Esc>:NERDTreeToggle<CR><Esc>:NERDTreeMirror<CR> " Afficher/enlever NERDTree
 nmap <C-Left>  :tabprevious<CR> " Aller à l'onglet suivant
 nmap <C-Right>  :tabnext<CR>    " Aller à l'onglet précédent
 nmap <C-c> :tabclose<CR>        " Fermer l'onglet courant
@@ -149,3 +162,23 @@ function MyDiff()
     let &shellxquote=l:shxq_sav
   endif
 endfunction
+
+""" si NERDTree est la seule fenetre ouverte on ferme vim
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" Afficher/enlever NERDTree
+map <F2> <Esc>:NERDTreeToggle<CR><Esc>:NERDTreeMirror<CR> 
+let NERDTreeShowBookmarks=1
+let NERDTreeAutoDeleteBuffer = 1
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+
+""" Syntasctic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
