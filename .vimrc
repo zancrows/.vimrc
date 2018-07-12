@@ -10,7 +10,9 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'davidhalter/jedi-vim'
-"Plugin 'lifepillar/vim-solarized8'
+Plugin 'lifepillar/vim-solarized8'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
 call vundle#end()
 
@@ -62,14 +64,13 @@ autocmd BufWinEnter *.* silent loadview
 
 
 """ scheme
-""colorscheme torte
-"set t_Co=88
-"let g:solarized_use16 = 1
+colorscheme solarized8
+"set t_Co=256
 let g:solarized_termtrans = 1
-let g:solarized_visibility = "hight"
-""set background=dark
-
-
+let g:solarized_termcolors=256
+set background=dark
+let g:airline_theme='solarized'
+let g:airline#extensions#tabline#enabled = 1
 
 """ affiche en rouge quand une ligne dépasse les 81 caractères (+1 pour les sauts de ligne) , les tabulations
 """ et les espaces en fin de ligne
@@ -91,7 +92,6 @@ inoremap { {}<ESC>ha
 
 " completion en fonction du langage
 autocmd FileType java,c,cpp,css,php call s:function_brackets()
-
 
 " completetion des accolades pour les fonctions, if, for etc...
 function s:function_brackets()
