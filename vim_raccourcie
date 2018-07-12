@@ -31,20 +31,3 @@ Overview of which map command works in which mode.  More details below.
 :lmap  :lnoremap :lunmap    Insert, Command-line, Lang-Arg
 :cmap  :cnoremap :cunmap    Command-line
 
-[NERDTRee]
-o(sur fichier) : ouvrir le fichier
-t (sur fichier) : ouvrir le fichier dans un nouvel onglet
-T (sur fichier) : ouvrir le fichier dans un nouvel onglet mais reste sur l'onglet actuel
-o (sur dossier ): ouvrir l'arborescense du fichier
-O (sur dossier ): ouvrir l'arborescense du fichier récursivement
-x  : ferme le noeud parent
-X (sur dossier) : ferme tout les noeuds des sous-répertoires
-C (sur dossier ) : placer le répertoire courant comme racine de l'explorateur 
-u : déplacer la racine de l'explorateur vers le répertoire précédent
-U : déplacer la racine de l'explorateur vers le répertoire précédent, mais laisse l'ancien répertoire racine ouvert
-r : rafraîchir le répertoire courant
-R : rafraîchir le répertoire racine
-m : afficher le menu de l'explorateu
-H : afficher/cacher les fichiers cachés
-F : afficher/cacher les fichiers
-f : filtrer les fichiers
