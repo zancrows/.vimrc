@@ -3,14 +3,14 @@ filetype off        " required
 
 
 """ Utilisation de vundle pour charger différents plugins
-set rtp+=
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'vim-syntastic/syntastic'
-"Plugin 'Valloric/YouCompleteMe'
-Plugin 'lifepillar/vim-solarized8'
+Plugin 'davidhalter/jedi-vim'
+"Plugin 'lifepillar/vim-solarized8'
 
 call vundle#end()
 
@@ -45,7 +45,7 @@ set tabpagemax=15       " Only show 15 tabs
 
 if has("unix")
     set shell=bash     " On précise le shell à utiliser
-    set visualbell     " Utilisation du clignotement à la place du "beep"
+    "set visualbell     " Utilisation du clignotement à la place du beep
     set noerrorbells
 endif
 
@@ -62,12 +62,12 @@ autocmd BufWinEnter *.* silent loadview
 
 
 """ scheme
-colorscheme torte
+""colorscheme torte
 "set t_Co=88
 "let g:solarized_use16 = 1
 let g:solarized_termtrans = 1
 let g:solarized_visibility = "hight"
-set background=dark
+""set background=dark
 
 
 
@@ -77,11 +77,11 @@ match ErrorMsg /\%>82v.*\|\t\| \+$/
 
 
 """ ajout de raccourcie
-nmap <C-Left>  :tabprevious<CR> " Aller à l'onglet suivant
-nmap <C-Right>  :tabnext<CR>    " Aller à l'onglet précédent
-nmap <C-c> :tabclose<CR>        " Fermer l'onglet courant
-nmap <C-t> :tabnew<CR>          " Ouvrir un nouvel onglet
-imap <C-Space> <C-x><C-o>       " utilisation de l'omni completion
+nmap <C-Left>  :tabprevious<CR>
+nmap <C-Right>  :tabnext<CR>
+nmap <C-c> :tabclose<CR>
+nmap <C-t> :tabnew<CR>
+"imap <C-Space> <C-x><C-o>
 " permet la completion de différent caractère
 inoremap ( ()<ESC>ha
 inoremap [ []<ESC>ha
@@ -119,15 +119,15 @@ endfunction
 
 
 """ Enable omni completion.
-"set omnifunc=syntaxcomplete#Complete
-"autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-"autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-"autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-"autocmd FileType python set omnifunc=pythoncomplete#Complete
-"autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-"autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-"autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
-
+set omnifunc=syntaxcomplete#Complete
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+autocmd FileType python setlocal completeopt-=preview
 
 set diffexpr=MyDiff()
 function MyDiff()
@@ -182,3 +182,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+""" jedi
+let g:ycm_autoclose_preview_window_after_completion=1
+let g:jedi#completions_enabled = 1
+let g:jedi#force_py_version = 3
