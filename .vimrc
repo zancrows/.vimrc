@@ -71,6 +71,7 @@ let g:solarized_termcolors=256
 set background=dark
 let g:airline_theme='solarized'
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
 
 """ affiche en rouge quand une ligne dépasse les 81 caractères (+1 pour les sauts de ligne) , les tabulations
 """ et les espaces en fin de ligne
