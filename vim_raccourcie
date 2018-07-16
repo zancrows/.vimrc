@@ -1,12 +1,70 @@
 # raccourcie de vim avec les plugins
 # commande (précision sur la commande) [équivalence si il y en]: description
-# <C-commande> = crtl-commande 
-
+# <C-commande> = crtl-commande
+# <A-commande> = Alt-commande
+# <S-commande> = Shift-commande
 
 [vim]
-u (mode normal) : équivalent ctrl-z
-za (mode normal) : ouvrir/fermer les folds
-<C-p> : autocomplétion en cherchant dans les fichiers ouvert
+### toutes les commandes suivantes fonctionnes en mode normal ###
+### le buffer principal de Vim est " quand on utilise les commandes suivantes
+### on écrase le buffer principal. On peut préciser dans quel buffer on copie
+###  quelque chose (voir plus bas)
+yy/Y : copier la ligne
+y$ : copie jusqua la fin de la ligne
+yw : copie jusqu'à la fin du  mot
+yl : copie la lettre
+[nombre]yy/[nombre]Y : copie le nombre de lignes
+dd : couper la ligne
+D/d$ : couper jusqu'à la fin de la ligne
+dw : couper jusqu'à la fin du  mot
+dl : coupe la lettre
+cc : pareil que dd mais passe en mode insertion en plus
+cl : meme que dl mais passe en mode insertion
+[y/d/c]a[signe] : applique les actions des commandes y/d/c  "correct in quotes"
+                      ex: pour la phrase --> DB_DataObject_Cast::sql('N[O]T NULL');
+                      yi' va copier N[O]T NULL
+                      yi( va copier 'N[O]T NULL'
+[y/d/c]i[signe]: applique les actions des commandes y/d/c  "correct a quotes"
+                     ex: avec la même phrase l'exemple du dessur'
+                     ya' va copier 'N[O]T NULL'
+                     ya( va copier ('N[O]T NULL')
+# on peut appliquer les lettre w/l a ces commandes
+#ex : daw supprime le mot sans être obliger d'être au début du mot
+
+p : colle le texte qui est dans le presse papier juste après le curseur
+P : même que 'p' mais avant le curseur
+"[a-z]yy : copie dans le buffer de la lettre précisée ex: "ayy copie dans le buffer a
+"[a-z]p : colle le contenu du buffer de la lettre précisée
+"Ayy : ajoute au buffer a sans écraser le contenu
+"+yy : copie la ligne dans le presse papier global
+"+p : colle le contenu du presse papier global
+
+### pour se déplacer rapidement ###
+G : va tout en bas du fichier
+gg : va tout au début du fichier
+<chiffre>G : va à la ligne du chiffre indiquée ex: 10G va à la ligne 10
+0 : va au début de la ligne
+$ : va à la fin de la ligne
+w : avance d'un mot  en positionnant sur le début du mot
+e : avance d'un mot en positionnant sur la fin du mot
+b : recule d'un mot en positionnant sur le début du mot
+ge: recule d'un mot en positionnant sur la fin du mot
+<C-e> : fait défiler l'écran vers le faut
+<C-y> : fait défiler l'écran vers le bas
+z<enter> : fait défiler l'écran de sorte que la ligne en cours sois la 1er ligne
+zz : fait défiler l'écran de sorte que la ligne en cours sois au centre
+H : place le curseur sur la première ligne  de l'écran
+M : place le curseur sur la ligne du milieu de l'écran
+L : place le curseur sur la dernière ligne de l'écran
+u : équivalent ctrl-z
+za : ouvrir/fermer les folds
+'' : retourne à la dernière position du curseur
+'. : retourne  à l'endroit de la dernière modification
+<C-o> : retourne sur toutes les positions passés du curseur
+<C-i> : retourne sur toutes les positions futures du curseur
+
+### mode insertion ###
+<C-n> : autocomplétion en cherchant dans les fichiers ouvert
 <C-x><C-o> : autocomplétion omni
 
 
@@ -29,5 +87,5 @@ Overview of which map command works in which mode.  More details below.
 :map!  :noremap! :unmap!    Insert and Command-line
 :imap  :inoremap :iunmap    Insert
 :lmap  :lnoremap :lunmap    Insert, Command-line, Lang-Arg
-:cmap  :cnoremap :cunmap    Command-line
+:cmap :cnoremap :cunmap Command-line
 
