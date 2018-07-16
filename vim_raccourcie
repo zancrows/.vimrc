@@ -11,12 +11,12 @@
 ###  quelque chose (voir plus bas)
 yy/Y : copier la ligne
 y$ : copie jusqua la fin de la ligne
-yw : copie jusqu'à la fin du  mot
+yw : copie jusqu'à la fin du mot
 yl : copie la lettre
 [nombre]yy/[nombre]Y : copie le nombre de lignes
 dd : couper la ligne
 D/d$ : couper jusqu'à la fin de la ligne
-dw : couper jusqu'à la fin du  mot
+dw : couper jusqu'à la fin du mot
 dl : coupe la lettre
 cc : pareil que dd mais passe en mode insertion en plus
 cl : meme que dl mais passe en mode insertion
@@ -56,12 +56,7 @@ zz : fait défiler l'écran de sorte que la ligne en cours sois au centre
 H : place le curseur sur la première ligne  de l'écran
 M : place le curseur sur la ligne du milieu de l'écran
 L : place le curseur sur la dernière ligne de l'écran
-u : équivalent ctrl-z
-za : ouvrir/fermer les folds
-'' : retourne à la dernière position du curseur
-'. : retourne  à l'endroit de la dernière modification
-<C-o> : retourne sur toutes les positions passés du curseur
-<C-i> : retourne sur toutes les positions futures du curseur
+
 ### recherche, remplacement ###
 / : recherche d'un mot en avant
 ? : recherche d'un mot en arrière
@@ -72,6 +67,31 @@ g# : pareil que g* mais cherche en arrière
 # les deux fonctions du dessus (g*, g #) sont utiles pour chercher
 # des variables quelque soit le préfixe comme en PHP avec les $
 # ou en C avec les pointeurs
+# pour chercher et remplacer sur une ligne la première occurence
+:[zone, %]s/texte_a_chercher/nouveau_texte/[g/c/i]
+% : indique qu'on travail sur tout le fichier
+g : pour indiquer change tutes les occurences de la ligne
+i : ne pas être sensible à la casse
+c : demande la confirmation à chaque remplacement
+[zone] : défini une zone de remplacement  ex : [5,10] pour les lignes de 5 a10
+         [.,+5] pour la ligne du curseur plus 5 lignes
+:g/rototo/s/toto/titi/g :  va changer tous les rototo en rotiti
+n : recherche l'occurence suivante
+N : recherche l'occurence précédente
+
+u : annule la dernière opération
+<C-r> rétablir la dernière opération annuléé
+. : répète la dernière action d'édition
+za : ouvrir/fermer les folds
+'' : retourne à la dernière position du curseur
+'. : retourne  à l'endroit de la dernière modification
+<C-o> : retourne sur toutes les positions passés du curseur
+<C-i> : retourne sur toutes les positions futures du curseur
+<C-w>s : split horizontal
+<C-w>v : split vertical
+<C-w>w : passe à la fenetre suivante
+<C-w>q : ferme la fenetre en cours
+<C-w>n: ouvre un fichier vierge
 
 ### mode insertion ###
 <C-n> : autocomplétion en cherchant dans les fichiers ouvert
