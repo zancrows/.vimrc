@@ -62,6 +62,16 @@ za : ouvrir/fermer les folds
 '. : retourne  à l'endroit de la dernière modification
 <C-o> : retourne sur toutes les positions passés du curseur
 <C-i> : retourne sur toutes les positions futures du curseur
+### recherche, remplacement ###
+/ : recherche d'un mot en avant
+? : recherche d'un mot en arrière
+* : recherle en avant du mot sous le curseur
+# : recherche en arrière du mot sous le curseur
+g* : pareil que * mais recherche en tant que string
+g# : pareil que g* mais cherche en arrière
+# les deux fonctions du dessus (g*, g #) sont utiles pour chercher
+# des variables quelque soit le préfixe comme en PHP avec les $
+# ou en C avec les pointeurs
 
 ### mode insertion ###
 <C-n> : autocomplétion en cherchant dans les fichiers ouvert
@@ -88,4 +98,3 @@ Overview of which map command works in which mode.  More details below.
 :imap  :inoremap :iunmap    Insert
 :lmap  :lnoremap :lunmap    Insert, Command-line, Lang-Arg
 :cmap :cnoremap :cunmap Command-line
-
