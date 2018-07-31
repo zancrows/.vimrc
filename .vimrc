@@ -78,6 +78,7 @@ match ErrorMsg /\%>82v.*\|\t\| \+$/
 
 
 """ ajout de raccourcie
+map <F7> :let @/ = ""<CR>
 nmap <C-Left>  :tabprevious<CR>
 nmap <C-Right>  :tabnext<CR>
 nmap <C-c> :tabclose<CR>
