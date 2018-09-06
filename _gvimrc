@@ -13,7 +13,6 @@ Plugin 'lifepillar/vim-solarized8'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
-
 call vundle#end()
 
 filetype plugin indent on
@@ -45,6 +44,12 @@ set laststatus=2        " Afficher toujours la bar de status
 set tabpagemax=15       " Only show 15 tabs
 
 
+if has("unix")
+    set shell=bash     " On précise le shell à utiliser
+    "set visualbell     " Utilisation du clignotement à la place du "beep"
+    set noerrorbells
+endif
+
 
 """ foldings
 set foldmethod=indent   " Fold spécifié selon la syntaxe du langage
@@ -70,7 +75,6 @@ match ErrorMsg /\%>82v.*\|\t\| \+$/
 
 
 """ ajout de raccourcie
-map <F7> :let @/ = ""<CR>
 nmap <C-Left>  :tabprevious<CR> " Aller à l'onglet suivant
 nmap <C-Right>  :tabnext<CR>    " Aller à l'onglet précédent
 nmap <C-c> :tabclose<CR>        " Fermer l'onglet courant
@@ -122,6 +126,39 @@ endfunction
 "autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
 
+set diffexpr=MyDiff()
+function MyDiff()
+  let opt = '-a --binary '
+  if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
+  if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
+  let arg1 = v:fname_in
+  if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
+  let arg1 = substitute(arg1, '!', '\!', 'g')
+  let arg2 = v:fname_new
+  if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
+  let arg2 = substitute(arg2, '!', '\!', 'g')
+  let arg3 = v:fname_out
+  if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
+  let arg3 = substitute(arg3, '!', '\!', 'g')
+  if $VIMRUNTIME =~ ' '
+    if &sh =~ '\<cmd'
+      if empty(&shellxquote)
+        let l:shxq_sav = ''
+        set shellxquote&
+      endif
+      let cmd = '"' . $VIMRUNTIME . '\diff"'
+    else
+      let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
+    endif
+  else
+    let cmd = $VIMRUNTIME . '\diff'
+  endif
+  let cmd = substitute(cmd, '!', '\!', 'g')
+  silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3
+  if exists('l:shxq_sav')
+    let &shellxquote=l:shxq_sav
+  endif
+endfunction
 
 """ si NERDTree est la seule fenetre ouverte on ferme vim
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
