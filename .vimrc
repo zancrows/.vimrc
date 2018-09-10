@@ -4,14 +4,16 @@ filetype off        " required
 
 """ Utilisation de vundle pour charger différents plugins
 set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call vundle#begin('~/.vim/bundle/')
 
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'vim-syntastic/syntastic'
-Plugin 'lifepillar/vim-solarized8'
+"Plugin 'lifepillar/vim-solarized8'
+Plugin 'altercation/vim-colors-solarized'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'valloric/YouCompleteMe'
 
 call vundle#end()
 
@@ -40,13 +42,13 @@ set fileencoding=utf-8  " Encoder en UTF-8
 set termencoding=utf-8  " Encoder en UTF-8
 set wildignore=*.o,*~   " On ignore les fichiers *.o et *~
 set laststatus=2        " Afficher toujours la bar de status
-set cursorline          " Highlight current line
+"set cursorline          " Highlight current line
 set tabpagemax=15       " Only show 15 tabs
 
 
 if has("unix")
     set shell=bash     " On précise le shell à utiliser
-    "set visualbell     " Utilisation du clignotement à la place du beep
+    "set visualbell     " Utilisation du clignotement à la place du "beep"
     set noerrorbells
 endif
 
@@ -63,12 +65,9 @@ autocmd BufWinEnter *.* silent loadview
 
 
 """ scheme
-colorscheme solarized8
-"set t_Co=256
-let g:solarized_termtrans = 1
-let g:solarized_termcolors=256
-set background=dark
-let g:airline_theme='solarized'
+colorscheme solarized
+"let g:solarized_termtrans = 1
+let g:airline_theme='solarized8_flat'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 
@@ -78,12 +77,10 @@ match ErrorMsg /\%>82v.*\|\t\| \+$/
 
 
 """ ajout de raccourcie
-map <F7> :let @/ = ""<CR>
-nmap <C-Left>  :tabprevious<CR>
-nmap <C-Right>  :tabnext<CR>
-nmap <C-c> :tabclose<CR>
-nmap <C-t> :tabnew<CR>
-"imap <C-Space> <C-x><C-o>
+nmap <C-Left>  :tabprevious<CR> " Aller à l'onglet suivant
+nmap <C-Right>  :tabnext<CR>    " Aller à l'onglet précédent
+nmap <C-c> :tabclose<CR>        " Fermer l'onglet courant
+nmap <C-t> :tabnew<CR>          " Ouvrir un nouvel onglet
 " permet la completion de différent caractère
 inoremap ( ()<ESC>ha
 inoremap [ []<ESC>ha
@@ -93,6 +90,7 @@ inoremap { {}<ESC>ha
 
 " completion en fonction du langage
 autocmd FileType java,c,cpp,css,php call s:function_brackets()
+
 
 " completetion des accolades pour les fonctions, if, for etc...
 function s:function_brackets()
@@ -120,15 +118,15 @@ endfunction
 
 
 """ Enable omni completion.
-set omnifunc=syntaxcomplete#Complete
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
-autocmd FileType python setlocal completeopt-=preview
+"set omnifunc=syntaxcomplete#Complete
+"autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+"autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+"autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+"autocmd FileType python set omnifunc=pythoncomplete#Complete
+"autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+"autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+"autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+
 
 set diffexpr=MyDiff()
 function MyDiff()
@@ -182,4 +180,3 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-
