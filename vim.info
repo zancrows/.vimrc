@@ -99,11 +99,18 @@ za : ouvrir/fermer les folds
 
 
 [vimrc]
+#NERDTree
 F2 : ferme/ouvre NERDTree
 <C-Left> [:tabprevious] : Aller à l'onglet précédent
 <C-Right> [:tabnext] : Aller à l'onglet suivant
 <C-c> [:tabclose]: fermer l'onglet courant
 <C-t> [:tabnew]: ouvre un nouvel onglet
+
+#NERDCommenter
+[count]<leader>cc : commentes le/les lignes
+[count]<leader>cu : décommentes le/les lignes
+[count]<leader>cA : ajoute un commentaire en fin de lignes
+[count]<leader>c$ : commente du curseur jusqu'a la fin de ligne
 
 [map]
 Overview of which map command works in which mode.  More details below.
