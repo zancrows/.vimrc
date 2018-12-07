@@ -12,6 +12,7 @@ Plugin 'lifepillar/vim-solarized8'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'scrooloose/nerdcommenter'
 
 call vundle#end()
 
@@ -53,6 +54,7 @@ set foldenable          " enable folding
 set foldlevelstart=99   " ouvre tous les folds
 set foldcolumn=3        " ajoute 3 colonnes pour le folding
 set foldnestmax=10      " maximum de folds imbriqué
+
 "sauvegarde et rechargement des folds
 autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent loadview
@@ -105,6 +107,8 @@ endfunction
 :inoremap <Esc>Ol +
 :inoremap <Esc>OS -
 :inoremap <Esc>OM <Enter>
+
+:let mapleader = ","
 
 set diffexpr=MyDiff()
 function MyDiff()
