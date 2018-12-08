@@ -170,5 +170,5 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 
-let g:ycm_global_ycm_extra_conf = "/home/zancrows/.vim/bundle/YouCompleteMe"
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe'
 set completeopt-=preview
