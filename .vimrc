@@ -9,11 +9,11 @@ call vundle#begin('~/.vim/bundle/')
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'vim-syntastic/syntastic'
-"Plugin 'lifepillar/vim-solarized8'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'valloric/YouCompleteMe'
+Plugin 'scrooloose/nerdcommenter'
 
 call vundle#end()
 
@@ -42,7 +42,6 @@ set fileencoding=utf-8  " Encoder en UTF-8
 set termencoding=utf-8  " Encoder en UTF-8
 set wildignore=*.o,*~   " On ignore les fichiers *.o et *~
 set laststatus=2        " Afficher toujours la bar de status
-"set cursorline          " Highlight current line
 set tabpagemax=15       " Only show 15 tabs
 
 
@@ -66,8 +65,7 @@ autocmd BufWinEnter *.* silent loadview
 
 """ scheme
 colorscheme solarized
-"let g:solarized_termtrans = 1
-let g:airline_theme='solarized8_flat'
+let g:airline_theme='solarized'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 
@@ -116,17 +114,7 @@ endfunction
 :inoremap <Esc>OS -
 :inoremap <Esc>OM <Enter>
 
-
-""" Enable omni completion.
-"set omnifunc=syntaxcomplete#Complete
-"autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-"autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-"autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-"autocmd FileType python set omnifunc=pythoncomplete#Complete
-"autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-"autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-"autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
-
+:let mapleader = ","
 
 set diffexpr=MyDiff()
 function MyDiff()
@@ -180,3 +168,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+
+let g:ycm_global_ycm_extra_conf = "/home/zancrows/.vim/bundle/YouCompleteMe"
+set completeopt-=preview
