@@ -12,8 +12,8 @@ Plugin 'vim-syntastic/syntastic'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'valloric/YouCompleteMe'
 
 call vundle#end()
 
@@ -170,5 +170,8 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe'
 set completeopt-=preview
+set omnifunc=syntaxcomplete#Complete
+
+let g:ycm_seed_identifiers_with_syntax=1
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
