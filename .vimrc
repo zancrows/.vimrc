@@ -169,9 +169,9 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-
+""" auto complétion
 set completeopt-=preview
 set omnifunc=syntaxcomplete#Complete
-
+set pumheight=10                        " Taille du menu d'autocomplétion
 let g:ycm_seed_identifiers_with_syntax=1
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
